@@ -1,0 +1,91 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+<div class="row">
+    <div class="col-sm-12 col-md-8 col-lg-9">
+        <h2 class="text-center">Dernières actus</h2>
+        <div class="row">
+            {% for article in articles %}
+
+            <div class="col-sm-12 col-md-4 col-lg-4">
+
+                <div class="card">
+                    <div class="card-img-top">
+                        <img class="img-fluid" src="{{ asset('images/articles/' ~ article.image) }}">
+                    </div>
+
+                    <div class="card-body">
+                        <p class="card-text"><a href="{{ path('article_show', {slug: article.slug}) }}">{{ article.title }}</a></p>
+                    </div>
+
+                </div>
+            </div>
+
+            {% else %}
+                Pas d'articles
+            {% endfor %}
+            <div class="col-sm-12 text-center">
+                <a href="{{ path('articles') }}">Voir plus d'articles</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-12 col-md-4 col-lg-3">
+        <h2 class="text-center">Derniers résultats</h2>
+        <hr>
+        {% for match in matches %}
+        <table class="table table-bordered">
+            <tr>
+                <td>{{ match.playerOne.name }}</td>
+                <td>{{ match.playerOneSetOne }}</td>
+                <td>{{ match.playerOneSetTwo }}</td>
+                {% if(match.playerOneSetThree is null) %}
+                    <td></td>
+                {% else %}
+                    <td>{{ match.playerOneSetThree }}</td>
+                {% endif %}
+                {% if match.playerOne == match.winner %}
+                    <td>X</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td>{{ match.playerTwo.name }}</td>
+                <td>{{ match.playerTwoSetOne }}</td>
+                <td>{{ match.playerTwoSetTwo }}</td>
+                {% if(match.playerTwoSetThree is null) %}
+                    <td></td>
+                {% else %}
+                    <td>{{ match.playerTwoSetThree }}</td>
+                {% endif %}
+                {% if match.playerTwo == match.winner %}
+                    <td>X</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+        </table>
+
+        {% else %}
+        {% endfor %}
+        <a href="{{ path('games') }}">Voir plus de résultat</a>
+    </div>
+</div>
+    <hr>
+<div class="row">
+    <div class="col-sm-12">
+        <h2 class="text-center">Dernières Vidéos</h2>
+        <div class="row">
+        {% for video in videos %}
+            <div class="col-sm-6 col-md-3">
+                <p class="text-center text-primary">{{ video.matchId.playerOne.name }} vs {{ video.matchId.playerTwo.name }}</p>
+                <div class="embed-responsive embed-responsive-21by9">
+                    <iframe class="embed-responsive-item" src="{{ video.url }}"></iframe>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+<hr>
+{% endblock %}

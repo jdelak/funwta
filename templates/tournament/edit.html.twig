@@ -1,0 +1,27 @@
+{% extends 'admin/index.html.twig' %}
+	{% block title %}Editer Tournoi{% endblock %}
+	{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card position-relative">
+                <div class="card-body">
+                    <p class="card-title">Editer un Tournoi</p>
+
+                    {{ form_start(form) }}
+                    {{ form_row(form.name) }}
+                    {{ form_row(form.season) }}
+
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                    {{ form_end(form) }}
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

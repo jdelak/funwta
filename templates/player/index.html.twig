@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Liste des Joueurs{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-sm-12">
+        <h2 class="text-primary text-center player-name">Tous les joueurs</h2>
+        <hr>
+        <table class="table">
+            <thead>
+            <tr class="text-center">
+                <th scope="col">Nom</th>
+                <th scope="col">Note globale</th>
+                <th scope="col">Nb Points</th>
+                <th scope="col">Pays</th>
+                <th scope="col">Rang</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for player in players %}
+
+            <tr>
+                <td><a href="{{ path('player_show', {id: player.id}) }}"><img class="player-img-table" src="{{ asset('images/players/'~player.image) }}" alt="{{ player.name }}"> <span class="h3">{{ player.name }}</span></a></td>
+                <td class="text-center">{{ player.note }}</td>
+                <td class="text-center">0</td>
+                <td class="text-center"><img class="img-fluid" src="{{ asset('images/countries/'~player.country.flag) }}" alt="{{ player.country.name }}"></td>
+                <td class="text-center">1</td>
+            </tr>
+
+            {% else %}
+            Pas encore de joueur/joueuse
+            {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Ajouter un joueur{% endblock %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12 grid-margin stretch-card">
+        <div class="card position-relative">
+            <div class="card-body">
+                <p class="card-title">Ajouter un joueur</p>
+                {{ form_start(form) }}
+                {{ form_row(form.country) }}
+                {{ form_row(form.name) }}
+                {{ form_row(form.height) }}
+                {{ form_row(form.imageFile) }}
+                {{ form_row(form.monteeFilet) }}
+                {{ form_row(form.puissance) }}
+                {{ form_row(form.reflexes) }}
+                {{ form_row(form.vitesseService) }}
+                {{ form_row(form.endurance) }}
+                {{ form_row(form.vitesse) }}
+                {{ form_row(form.servicePlat) }}
+                {{ form_row(form.serviceLift) }}
+                {{ form_row(form.serviceSlice) }}
+                {{ form_row(form.droitPlat) }}
+                {{ form_row(form.droitLift) }}
+                {{ form_row(form.droitSlice) }}
+                {{ form_row(form.reversPlat) }}
+                {{ form_row(form.reversLift) }}
+                {{ form_row(form.reversSlice) }}
+                {{ form_row(form.volee) }}
+                {{ form_row(form.voleeAmorti) }}
+                {{ form_row(form.lob) }}
+                {{ form_row(form.victory) }}
+                {{ form_row(form.trophy) }}
+                <button type="submit" class="btn btn-primary">Envoyer</button>
+                {{ form_end(form) }}
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

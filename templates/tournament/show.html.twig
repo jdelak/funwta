@@ -1,0 +1,88 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ tournament.name }} - {{ tournament.season.name }}{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-primary text-center player-name">{{ tournament.name }} - {{ tournament.season.name }}</h2>
+            <hr>
+            <iframe src="{{ tournament.url }}" width="100%" height="500" frameborder="0" scrolling="auto" allowtransparency="true"></iframe>
+        </div>
+        <div class="col-sm-12 col-md-8 text-center">
+            {% for match in matchs %}
+                <div>
+                    <h4>{{ match.round }} - {{ match.playerOne.name }} vs {{ match.PlayerTwo.name }}</h4>
+                    <table class="table table-bordered">
+                        <thead>
+                        <tr>
+                            <th scope="col">Joueurs</th>
+                            <th scope="col">Set #1</th>
+                            <th scope="col">Set #2</th>
+                            <th scope="col">Set #3</th>
+                            <th scope="col">Vainqueur</th>
+                        </tr>
+                        </thead>
+                        <tr>
+                            <td>{{ match.playerOne.name }}</td>
+                            <td>{{ match.playerOneSetOne }}</td>
+                            <td>{{ match.playerOneSetTwo }}</td>
+                            {% if(match.playerOneSetThree is null) %}
+                                <td></td>
+                            {% else %}
+                                <td>{{ match.playerOneSetThree }}</td>
+                            {% endif %}
+                            {% if match.playerOne == match.winner %}
+                                <td>X</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                        </tr>
+                        <tr>
+                            <td>{{ match.playerTwo.name }}</td>
+                            <td>{{ match.playerTwoSetOne }}</td>
+                            <td>{{ match.playerTwoSetTwo }}</td>
+                            {% if(match.playerTwoSetThree is null) %}
+                                <td></td>
+                            {% else %}
+                                <td>{{ match.playerTwoSetThree }}</td>
+                            {% endif %}
+                            {% if match.playerTwo == match.winner %}
+                                <td>X</td>
+                            {% else %}
+                                <td></td>
+                            {% endif %}
+                        </tr>
+                    </table>
+                </div>
+            {% else %}
+                Pas encore de matchs
+            {% endfor %}
+        </div>
+        <div class="col-sm-12 col-md-4 text-center">
+            <h3>Classement :</h3>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">Joueur</th>
+                    <th scope="col">Nb Points</th>
+                </tr>
+                </thead>
+                <tbody>
+            {% for ranking in rankings %}
+                <tr>
+                    <td>{{ ranking.player.name }}</td>
+                    <td>{{ ranking.points }}</td>
+                </tr>
+            {% else %}
+                <tr>
+                    <td>Pas encore de classement</td>
+                </tr>
+            {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock javascripts %}

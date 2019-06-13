@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-sm-12 col-md-12 col-lg-12">
+            <h2 class="text-center">FAQ</h2>
+            <hr>
+            <div class="faq">
+                <div class="faq-question">
+                    Proposer une nouvelle joueuse
+                </div>
+                <div class="faq-reponse">
+                    Pour Proposer une nouvelle joueuse, il vous suffit d'aller dans la rubrique "contact" puis de choisir
+                    le sujet "Proposer une nouvelle joueuse", ensuite dans le message, indiquez le nom de la joueuse ainsi
+                    que votre pseudo sur AO International Tennis.
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">
+                    Classement des joueuses
+                </div>
+                <div class="faq-reponse">
+                    Le classement des joueuses est mis à jour à la fin de chaque round de chaque tournoi.
+                    <table>
+                        <tr>
+                            <th>Position</th>
+                            <th>Nb Points</th>
+                        </tr>
+                        <tr>
+                            <td>Vainqueur</td>
+                            <td>2000</td>
+                        </tr>
+                        <tr>
+                            <td>Finaliste</td>
+                            <td>1500</td>
+                        </tr>
+                        <tr>
+                            <td>1/2</td>
+                            <td>750</td>
+                        </tr>
+                        <tr>
+                            <td>1/4</td>
+                            <td>350</td>
+                        </tr>
+                        <tr>
+                            <td>1/8</td>
+                            <td>180</td>
+                        </tr>
+                        <tr>
+                            <td>1/16</td>
+                            <td>90</td>
+                        </tr>
+                        <tr>
+                            <td>1/32</td>
+                            <td>45</td>
+                        </tr>
+                        <tr>
+                            <td>1/64</td>
+                            <td>20</td>
+                        </tr>
+                    </table>
+                    <br>
+                    Le classement est réinitialisé à chaque début de saison.
+                </div>
+            </div>
+            <div class="faq">
+                <div class="faq-question">
+                    Attribution des stats
+                </div>
+                <div class="faq-reponse">
+                    Chaque nouvelle joueuse commence avec 50 à toutes les stats. Ensuite elles gagnent un certain nombre
+                    de points de stats à réatribbuer après chaque tournoi suivant leur classement dans le tournoi.
+                    <table>
+                        <tr>
+                            <th>Position</th>
+                            <th>Nb Points</th>
+                        </tr>
+                        <tr>
+                            <td>Vainqueur</td>
+                            <td>50</td>
+                        </tr>
+                        <tr>
+                            <td>Finaliste</td>
+                            <td>40</td>
+                        </tr>
+                        <tr>
+                            <td>1/2</td>
+                            <td>35</td>
+                        </tr>
+                        <tr>
+                            <td>1/4</td>
+                            <td>30</td>
+                        </tr>
+                        <tr>
+                            <td>1/8</td>
+                            <td>25</td>
+                        </tr>
+                        <tr>
+                            <td>1/16</td>
+                            <td>20</td>
+                        </tr>
+                        <tr>
+                            <td>1/32</td>
+                            <td>15</td>
+                        </tr>
+                        <tr>
+                            <td>1/64</td>
+                            <td>10</td>
+                        </tr>
+                    </table>
+                    <br>
+                    Les joueuses perdent 2 points de stats globales à chaque tournoi qu'elles manquent
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block javascripts %}
+    <script>
+    jQuery.noConflict();
+    jQuery('.faq').click(function () {
+        jQuery(this).children().slideDown('300');
+    });
+    </script>
+{% endblock %}

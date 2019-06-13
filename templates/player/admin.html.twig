@@ -1,0 +1,80 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Liste des Joueurs{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card position-relative">
+                <div class="card-body">
+                    <p class="card-title">Liste des joueurs</p>
+                    <table class="table">
+                        <thead>
+                        <tr class="text-center">
+                            <th scope="col">#</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Pays</th>
+                            <th scope="col">Filet</th>
+                            <th scope="col">Puiss</th>
+                            <th scope="col">Réfl</th>
+                            <th scope="col">Vit<br>Serv</th>
+                            <th scope="col">Endur</th>
+                            <th scope="col">Vit</th>
+                            <th scope="col">Serv<br>Plat</th>
+                            <th scope="col">Serv<br>Lift</th>
+                            <th scope="col">Serv<br>Slice</th>
+                            <th scope="col">CD<br>Plat</th>
+                            <th scope="col">CD<br>Lift</th>
+                            <th scope="col">CD<br>Slice</th>
+                            <th scope="col">Rev<br>Plat</th>
+                            <th scope="col">Rev<br>Lift</th>
+                            <th scope="col">Rev<br>Slice</th>
+                            <th scope="col">Volée</th>
+                            <th scope="col">Amorti</th>
+                            <th scope="col">Lob</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for player in players %}
+
+                            <tr>
+                                <td class="text-center">{{player.id }}</td>
+
+                                <td class="text-center">{{ player.name }}</td>
+                                <td class="text-center"><img class="img-fluid" src="{{ asset('images/players/'~player.image) }}" alt="{{ player.name }}"></td>
+                                <td class="text-center"><img class="img-fluid" src="{{ asset('images/countries/'~player.country.flag) }}" alt="{{ player.country.name }}"></td>
+                                <td class="text-center">{{ player.monteeFilet }}</td>
+                                <td class="text-center">{{ player.puissance }}</td>
+                                <td class="text-center">{{ player.reflexes }}</td>
+                                <td class="text-center">{{ player.vitesseService }}</td>
+                                <td class="text-center">{{ player.endurance }}</td>
+                                <td class="text-center">{{ player.vitesse }}</td>
+                                <td class="text-center">{{ player.servicePlat }}</td>
+                                <td class="text-center">{{ player.serviceLift }}</td>
+                                <td class="text-center">{{ player.serviceSlice }}</td>
+                                <td class="text-center">{{ player.droitPlat }}</td>
+                                <td class="text-center">{{ player.droitLift }}</td>
+                                <td class="text-center">{{ player.droitSlice }}</td>
+                                <td class="text-center">{{ player.reversPlat }}</td>
+                                <td class="text-center">{{ player.reversLift }}</td>
+                                <td class="text-center">{{ player.reversSlice }}</td>
+                                <td class="text-center">{{ player.volee }}</td>
+                                <td class="text-center">{{ player.voleeAmorti }}</td>
+                                <td class="text-center">{{ player.lob }}</td>
+                                <td><a class="btn btn-primary" href="{{ path('player_edit', {id: player.id}) }}">Edit</a></td>
+                            </tr>
+
+                        {% else %}
+                            Pas encore de joueur/joueuse
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

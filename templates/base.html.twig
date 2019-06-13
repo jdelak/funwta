@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{% block title %}Fun WTA{% endblock %}</title>
+        {% block stylesheets %}
+			<link href="https://stackpath.bootstrapcdn.com/bootswatch/4.3.1/pulse/bootstrap.min.css" rel="stylesheet" integrity="sha384-/uQFqO50IaQu2rNJYKPpV7zwsWJtd6V4DGX4wMw1ATz4KPuZEV96qQ2heVAw2kr2" crossorigin="anonymous">
+		{{ encore_entry_link_tags('app') }}
+		{% endblock %}
+
+		<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-57x57.png') }}">
+		<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-60x60.png') }}">
+		<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-72x72.png') }}">
+		<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-76x76.png') }}">
+		<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-114x114.png') }}">
+		<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-120x120.png') }}">
+		<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-144x144.png') }}">
+		<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-152x152.png') }}">
+		<link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-180x180.png') }}">
+
+		<link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('images/favicon/android-icon-192x192.png') }}">
+		<link rel="icon" type="image/png" sizes="32x32"  href="{{ asset('images/favicon/android-icon-32x32.png') }}">
+		<link rel="icon" type="image/png" sizes="96x96"  href="{{ asset('images/favicon/android-icon-96x96.png') }}">
+		<link rel="icon" type="image/png" sizes="16x16"  href="{{ asset('images/favicon/android-icon-16x16.png') }}">
+		<link rel="manifest" href="{{ asset('images/favicon/manifest.json') }}">
+		<meta name="msapplication-TileColor" content="#ffffff">
+		<meta name="msapplication-TileImage" content="{{ asset('images/favicon/ms-icon-144x144.png') }}">
+		<meta name="theme-color" content="#ffffff">
+
+    </head>
+    <body>
+        {% block body %}
+
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+			<a class="navbar-brand" href="{{ path('front') }}"><img src="{{ asset('images/funwta.png') }}"></a>
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarText">
+				<ul class="navbar-nav mr-auto">
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('articles') }}">News</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('rankings') }}">Classements</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('tournaments') }}">Tournois</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('players') }}">Joueurs</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="{{ path('contact') }}">Contact</a>
+					</li>
+				</ul>
+				<span class="navbar-text">
+					{% if not app.user %}
+						<a class="btn btn-primary" href="{{ path('security_login') }}">Connexion </a>
+						<a class="btn default-btn" href="{{ path('security_registration') }}">Inscription</a>
+					{% else %}
+						Bienvenue {{ app.user.username }}
+						<a class="btn default-btn" href="{{ path('security_logout') }}">Déconnexion</a>
+					{% endif %}
+				</span>
+			</div>
+		</nav>
+		<div class="container">
+			{% block message %}
+				{% for message in app.flashes('success') %}
+					<div class="alert alert-success">
+						{{ message }}
+					</div>
+				{% endfor %}
+
+				{% for message in app.flashes('warning') %}
+					<div class="alert alert-warning">
+						{{ message }}
+					</div>
+				{% endfor %}
+
+				{% for message in app.flashes('danger') %}
+					<div class="alert alert-danger">
+						{{ message }}
+					</div>
+				{% endfor %}
+			{% endblock %}
+			{% block content %}
+
+			{% endblock %}
+		</div>
+		<footer class="text-center bg-primary">
+			<span class="text-white">2019 - funwta.fr</span>
+		</footer>
+		{{ encore_entry_script_tags('app') }}
+		<script src = "https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        {% block javascripts %}
+
+		{% endblock javascripts %}
+		{% endblock body %}
+    </body>
+</html>

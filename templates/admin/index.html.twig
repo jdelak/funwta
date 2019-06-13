@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Admin{% endblock %}</title>
+    <!-- plugins:css -->
+    <link rel="stylesheet" href="{{ asset('css/vendor.bundle.base.css') }}">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <!-- endinject -->
+    <!-- plugin css for this page -->
+    <!-- End plugin css for this page -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+    <!-- endinject -->
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-57x57.png') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-60x60.png') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-72x72.png') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-76x76.png') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-114x114.png') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-120x120.png') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-144x144.png') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-152x152.png') }}">
+    <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('images/favicon/apple-icon-180x180.png') }}">
+
+    <link rel="icon" type="image/png" sizes="192x192"  href="{{ asset('images/favicon/android-icon-192x192.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32"  href="{{ asset('images/favicon/android-icon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="96x96"  href="{{ asset('images/favicon/android-icon-96x96.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16"  href="{{ asset('images/favicon/android-icon-16x16.png') }}">
+    <link rel="manifest" href="{{ asset('images/favicon/manifest.json') }}">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="{{ asset('images/favicon/ms-icon-144x144.png') }}">
+    <meta name="theme-color" content="#ffffff">
+</head>
+<body>
+{% block body %}
+<div class="container-scroller">
+    <!-- partial:partials/_navbar.html -->
+    <nav class="navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
+        <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
+            <a class="navbar-brand brand-logo mr-5" href="{{ path('admin') }}"><img src="{{ asset('images/funwta.png') }}" class="mr-2" alt="logo"/></a>
+            <a class="navbar-brand brand-logo-mini" href="{{ path('admin') }}"><img src="{{ asset('images/funwta.png') }}" alt="logo"/></a>
+        </div>
+        <div class="navbar-menu-wrapper d-flex align-items-center justify-content-end">
+            <button class="navbar-toggler navbar-toggler align-self-center" type="button" data-toggle="minimize">
+                <span><i class="fas fa-bars"></i></span>
+            </button>
+            <ul class="navbar-nav navbar-nav-right">
+                <li class="nav-item nav-profile dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
+                        <img src="" alt="profile"/>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
+                        <a class="dropdown-item">
+                            <i class="ti-settings text-primary"></i>
+                            Settings
+                        </a>
+                        <a class="dropdown-item">
+                            <i class="ti-power-off text-primary"></i>
+                            <a href="{{ path('security_logout') }}">Déconnexion</a>
+                        </a>
+                    </div>
+                </li>
+            </ul>
+            <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
+                <span class="ti-view-list"></span>
+            </button>
+        </div>
+    </nav>
+    <!-- partial -->
+    <div class="container-fluid page-body-wrapper">
+        <!-- partial:partials/_sidebar.html -->
+        <nav class="sidebar sidebar-offcanvas" id="sidebar">
+            <ul class="nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ path('admin') }}">
+                        <i class="fas fa-shield-alt menu-icon"></i>
+                        <span class="menu-title">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="far fa-sticky-note menu-icon"></i>
+                        <span class="menu-title"> Saisons </span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('season') }}">Liste des saisons</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('season_add') }}">Ajouter une saison</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic1" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="fas fa-trophy menu-icon"></i>
+                        <span class="menu-title"> Tournois </span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic1">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('tournament') }}">Liste des tournois</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('tournament_add') }}">Ajouter un tournoi</a></li>
+                        </ul>
+                    </div>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic3" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="fas fa-user menu-icon"></i>
+                        <span class="menu-title"> Joueurs </span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic3">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('player') }}">Liste des joueurs</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('player_add') }}">Ajouter un joueur</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic4" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="fas fa-calendar-alt menu-icon"></i>
+                        <span class="menu-title"> Matchs </span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic4">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('game') }}">Liste des Matchs</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('game_add') }}">Ajouter une Match</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="far fa-newspaper menu-icon"></i>
+                        <span class="menu-title"> Blog </span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic5">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('article') }}">Liste des Articles</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('article_add') }}">Ajouter un Article</a></li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#ui-basic5" aria-expanded="false" aria-controls="ui-basic">
+                        <i class="fas fa-video menu-icon"></i>
+                        <span class="menu-title"> Vidéos </span>
+                        <i class="fas fa-arrow-down"></i>
+                    </a>
+                    <div class="collapse" id="ui-basic6">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('video') }}">Liste des Vidéos</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{ path('video_add') }}">Ajouter un Vidéo</a></li>
+                        </ul>
+                    </div>
+                </li>
+            </ul>
+        </nav>
+        <!-- partial -->
+        <div class="main-panel">
+            <div class="content-wrapper">
+                {% block message %}
+                    {% for message in app.flashes('success') %}
+                        <div class="alert alert-success">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+
+                    {% for message in app.flashes('warning') %}
+                        <div class="alert alert-warning">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+
+                    {% for message in app.flashes('danger') %}
+                        <div class="alert alert-danger">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endblock %}
+                {% block content %}
+                <div class="row">
+                    <div class="col-md-12 grid-margin stretch-card">
+                        <div class="card position-relative">
+                            <div class="card-body">
+                                <p class="card-title">Dashboard</p>
+                                <div class="row">
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endblock %}
+            </div>
+            <!-- content-wrapper ends -->
+            <!-- partial:partials/_footer.html -->
+            <footer class="footer">
+                <div class="d-sm-flex justify-content-center justify-content-sm-between">
+                    <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Copyright © 2019 funWTA. Tous droits réservés.</span>
+                </div>
+            </footer>
+            <!-- partial -->
+        </div>
+        <!-- main-panel ends -->
+    </div>
+    <!-- page-body-wrapper ends -->
+</div>
+<!-- container-scroller -->
+
+<!-- plugins:js -->
+<script src="{{ asset('js/vendor.bundle.base.js') }}"></script>
+<!-- endinject -->
+<!-- Plugin js for this page-->
+<!-- inject:js -->
+<script src="{{ asset('js/off-canvas.js') }}"></script>
+<script src="{{ asset('js/hoverable-collapse.js') }}"></script>
+<script src="{{ asset('js/template.js') }}"></script>
+<script src="{{ asset('js/todolist.js') }}"></script>
+<!-- endinject -->
+<!-- Custom js for this page-->
+<script src="{{ asset('js/dashboard.js') }}"></script>
+<!-- End custom js for this page-->
+{% endblock %}
+</body>
+
+</html>
+
+

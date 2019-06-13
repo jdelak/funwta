@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+	{% block title %}Connexion{% endblock %}
+{% block content %}
+	<div class="row">
+		<div class="col-lg-10 col-md-10 mx-auto"><h2>Connexion</h2>
+			<form method="post" action="{{ path('security_login') }}">
+				<div class="form-group">
+					<label>Email</label>
+					<input required type="text" name="_username" class="form-control">
+				</div>
+				<div class="form-group">
+					<label>Mot de Passe</label>
+					<input required type="password" name="_password" class="form-control">
+				</div>
+		    	<div class="form-group">
+	    			<button type="submit" class="btn btn-primary">Envoyer</button>
+	    		</div>
+				
+    		</form>
+    		<div>
+            <a href="{{ path('forgotten_password') }}">Mot de Passe Oublié ?</a>
+        	</div>
+    		<hr>
+		</div>
+	</div>
+{% endblock %}

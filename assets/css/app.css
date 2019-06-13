@@ -1,0 +1,99 @@
+.container{
+    margin-top:40px;
+    margin-bottom:40px;
+    min-height:800px;
+}
+
+h2{
+    font-size:30px;
+}
+h3{
+    font-size:24px;
+}
+
+nav{
+    font-size: 16px;
+}
+
+.table th, .table td{
+    vertical-align:middle;
+}
+
+h2.player-name, .player-country{
+    text-transform: uppercase;
+}
+
+.ranked{
+    margin-top:20px;
+}
+
+.player-attributes{
+    min-height: 60px;
+}
+
+.player-attributes p{
+    font-weight:bold;
+    font-size:10px;
+    margin-bottom:0;
+    text-transform: uppercase;
+}
+
+.player-attributes span{
+    font-size:20px;
+}
+
+.current-ranking{
+    font-size:40px;
+}
+
+.player-img-table{
+    width:60px;
+}
+
+.tab-pane{
+    padding: 20px;
+}
+
+footer{
+    padding:20px;
+
+}
+
+.game-video{
+    max-width: 560px;
+    margin: auto;
+}
+
+.game-video-content{
+    position: relative;
+    height: 0;
+    padding-bottom: 56.25%;
+}
+
+.game-video iframe{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.faq{
+
+}
+
+.faq-question{
+    font-size: 20px;
+    font-weight:bold;
+}
+
+.faq-reponse{
+    display:none;
+}
+
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1410px;
+    }
+}

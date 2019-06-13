@@ -1,0 +1,39 @@
+{% extends 'admin/index.html.twig' %}
+	{% block title %}Liste des Saisons{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card position-relative">
+                <div class="card-body">
+                    <p class="card-title">Liste des Saisons</p>
+                    <table class="table">
+                        <thead>
+                        <tr class="text-center">
+                            <th scope="col">#</th>
+                            <th scope="col">Nom</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for season in seasons %}
+                            <tr>
+                                <td class="text-center">{{ season.id }}</td>
+                                <td class="text-center">{{ season.name }}</td>
+                                <td><a class="btn btn-primary" href="{{ path('season_edit', {id: season.id}) }}">Editer</a></td>
+                            </tr>
+                        {% else %}
+                            Pas encore de Tournois
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

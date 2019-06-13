@@ -1,0 +1,33 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Ajouter un Match{% endblock %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card position-relative">
+                <div class="card-body">
+                    <p class="card-title">Ajouter un match</p>
+                    {{ form_start(form) }}
+                    {{ form_row(form.tournament) }}
+                    {{ form_row(form.round) }}
+                    {{ form_row(form.playerOne) }}
+                    {{ form_row(form.playerTwo) }}
+                    {{ form_row(form.playerOneSetOne) }}
+                    {{ form_row(form.playerOneSetTwo) }}
+                    {{ form_row(form.playerOneSetThree) }}
+                    {{ form_row(form.playerTwoSetOne) }}
+                    {{ form_row(form.playerTwoSetTwo) }}
+                    {{ form_row(form.playerTwoSetThree) }}
+                    {{ form_row(form.winner) }}
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                    {{ form_end(form) }}
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

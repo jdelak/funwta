@@ -1,0 +1,53 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les matchs{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-primary text-center player-name">Tous les matchs</h2>
+            <hr>
+    {% for match in games %}
+        <table class="table table-bordered">
+            <tr>
+                <td><h3>{{ match.tournament.season.name }} - {{ match.tournament.name }} - Round : {{ match.round }}</h3></td>
+                <td>set #1</td>
+                <td>set #2</td>
+                <td>set #3</td>
+                <td>vainqueur</td>
+            </tr>
+            <tr>
+                <td><a href="{{ path('player_show', {id: match.playerOne.id}) }}">{{ match.playerOne.name }}</a></td>
+                <td>{{ match.playerOneSetOne }}</td>
+                <td>{{ match.playerOneSetTwo }}</td>
+                {% if(match.playerOneSetThree is null) %}
+                    <td></td>
+                {% else %}
+                    <td>{{ match.playerOneSetThree }}</td>
+                {% endif %}
+                {% if match.playerOne == match.winner %}
+                    <td>X</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+            <tr>
+                <td><a href="{{ path('player_show', {id: match.playerTwo.id}) }}">{{ match.playerTwo.name }}</a></td>
+                <td>{{ match.playerTwoSetOne }}</td>
+                <td>{{ match.playerTwoSetTwo }}</td>
+                {% if(match.playerTwoSetThree is null) %}
+                    <td></td>
+                {% else %}
+                    <td>{{ match.playerTwoSetThree }}</td>
+                {% endif %}
+                {% if match.playerTwo == match.winner %}
+                    <td>X</td>
+                {% else %}
+                    <td></td>
+                {% endif %}
+            </tr>
+        </table>
+        {% endfor %}
+        </div>
+    </div>
+{% endblock %}

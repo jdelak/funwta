@@ -1,0 +1,250 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ player.name }}{% endblock %}
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-primary text-center player-name">{{ player.name }}</h2>
+            <hr>
+            <div class="row part1">
+                <div class="col-12 col-sm-6 col-lg-4 ">
+                    <img class="img-fluid" src="{{ asset('images/players/'~player.image) }}" alt="{{ player.name }}">
+                </div>
+                <div class="col-12 col-sm-6 col-lg-4">
+
+                    <div class="row">
+                        <br>
+                        <div class="col-6 col-sm-6 col-md-6 text-center">
+                            <div><img src="{{ asset('images/countries/'~player.country.flag) }}" alt="{{ player.country.name }}"> <span class="player-country">{{ player.country.name }}</span><span></span></div>
+                        </div>
+                        <div class="col-6 col-sm-6 col-md-6 text-center">
+                            <div>Taille : {{ player.height }} cm</div>
+                        </div>
+                        <br>
+                        <div class="col-12 col-sm-6 col-md-6 text-center ranked">
+                            <h3>Classement</h3>
+                            <p class="current-ranking text-primary">
+                                {% if ranking %}
+                                    {{ ranking.position }}
+                                {% else %}
+                                    non classé
+                                {% endif %}
+                            </p>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 text-center ranked">
+                            <h3>Note Globale</h3>
+                            <p class="current-ranking text-primary">{{ player.note }}</p>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 text-center ranked">
+                            <h3>Nb Victoires</h3>
+                            <p class="current-ranking text-primary">{{ player.victory }}</p>
+                        </div>
+                        <div class="col-12 col-sm-6 col-md-6 text-center ranked">
+                            <h3>Nb Trophées</h3>
+                            <p class="current-ranking text-primary">{{ player.trophy }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-12 col-lg-4">
+                    <div class="row">
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Montée au filet</p>
+                            <span>{{ player.monteeFilet }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Puissance</p>
+                            <span>{{ player.puissance }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Reflexes</p>
+                            <span>{{ player.reflexes }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Vitesse Service</p>
+                            <span>{{ player.vitesseService }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Endurance</p>
+                            <span>{{ player.endurance }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Vitesse</p>
+                            <span>{{ player.vitesse }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Service à Plat</p>
+                            <span>{{ player.servicePlat }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Service Lifté</p>
+                            <span>{{ player.serviceLift }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Service Slicé</p>
+                            <span>{{ player.serviceSlice }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Coup Droit à Plat</p>
+                            <span>{{ player.droitPlat }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Coup Droit Lifté</p>
+                            <span>{{ player.droitLift }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Coup Droit Slicé</p>
+                            <span>{{ player.droitSlice }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Revers à Plat</p>
+                            <span>{{ player.reversPlat }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Revers Lifté</p>
+                            <span>{{ player.reversLift }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Revers Slicé</p>
+                            <span>{{ player.reversSlice }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Volée</p>
+                            <span>{{ player.volee }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Volée Amorti</p>
+                            <span>{{ player.voleeAmorti }}</span>
+                        </div>
+                        <div class="player-attributes col-4 text-center">
+                            <p class="text-primary">Lob</p>
+                            <span>{{ player.lob }}</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <hr>
+            <div class="row part2">
+                <div class="col-sm-12">
+                    <ul class="nav nav-pills nav-fill">
+                        <li class="nav-item">
+                            <a data-toggle="tab" class="nav-link active" href="#matches">Matchs</a>
+                        </li>
+                        <li class="nav-item">
+                            <a data-toggle="tab" class="nav-link" href="#archives">Archives</a>
+                        </li>
+                        <li class="nav-item">
+                            <a data-toggle="tab" class="nav-link" href="#videos">Vidéos</a>
+                        </li>
+                    </ul>
+                    <hr>
+                </div>
+
+                <div class="tab-content col-sm-12">
+                    <div class="col-sm-12 tab-pane active" id="matches">
+
+                        {% for match in matchs %}
+                            <h4>{{ match.tournament.season.name }} - {{ match.tournament.name }}</h4>
+                            <h5>{{ match.round }}</h5>
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Joueurs</th>
+                                <th scope="col">S1</th>
+                                <th scope="col">S2</th>
+                                <th scope="col">S3</th>
+                                <th scope="col">Vainqueur</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                {% if match.playerOne == player %}
+                                    <td class="text-white bg-primary">{{ match.playerOne.name }}</td>
+                                {% else %}
+                                    <td>{{ match.playerOne.name }}</td>
+                                {% endif %}
+                                <td>{{ match.playerOneSetOne }}</td>
+                                <td>{{ match.playerOneSetTwo }}</td>
+                                {% if(match.playerOneSetThree is null) %}
+                                    <td></td>
+                                {% else %}
+                                    <td>{{ match.playerOneSetThree }}</td>
+                                {% endif %}
+                                {% if match.playerOne == match.winner %}
+                                    <td>X</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                            </tr>
+                            <tr>
+                                {% if match.playerTwo == player %}
+                                    <td class="text-white bg-primary">{{ match.playerTwo.name }}</td>
+                                {% else %}
+                                    <td>{{ match.playerTwo.name }}</td>
+                                {% endif %}
+                                <td>{{ match.playerTwoSetOne }}</td>
+                                <td>{{ match.playerTwoSetTwo }}</td>
+                                {% if( match.playerTwoSetThree is null) %}
+                                    <td></td>
+                                {% else %}
+                                    <td>{{ match.playerTwoSetThree }}</td>
+                                {% endif %}
+                                {% if match.playerTwo == match.winner %}
+                                    <td>X</td>
+                                {% else %}
+                                    <td></td>
+                                {% endif %}
+                            </tr>
+                            </tbody>
+
+                        </table>
+                        {% else %}
+                            Pas encore de matchs pour ce/cette joueur/joueuse
+                        {% endfor %}
+
+                    </div>
+                    <div class="col-sm-12 tab-pane" id="archives">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th scope="col">Saison</th>
+                                <th scope="col">Points</th>
+                                <th scope="col">Position</th>
+                            </tr>
+                        {% for archive in archives %}
+                                <tr>
+                                    <td>{{ archive.season.name }}</td>
+                                    <td>{{ archive.points }}</td>
+                                    <td>{{ archive.position }}</td>
+                                </tr>
+                        {% else %}
+                            <tr>
+                                <td>Pas encore d'archive pour ce/cette joueur/joueuse</td>
+                            </tr>
+                        {% endfor %}
+                        </table>
+                    </div>
+                    <div class="col-sm-12 tab-pane" id="videos">
+                        <div class="row">
+                        {% for video in videos %}
+
+                                <div class="col-sm-12 col-md-4">
+                                    <p class="text-center text-primary">{{ video.matchId.playerOne.name }} vs {{ video.matchId.playerTwo.name }}</p>
+                                    <div class="embed-responsive embed-responsive-21by9">
+                                        <iframe class="embed-responsive-item" src="{{ video.url }}"></iframe>
+                                    </div>
+                                </div>
+
+                        {% else %}
+                            Pas encore de vidéos pour ce/cette joueur/joueuse
+                        {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock javascripts %}

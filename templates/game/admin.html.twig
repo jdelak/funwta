@@ -1,0 +1,59 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Liste des Matches{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card position-relative">
+                <div class="card-body">
+                    <p class="card-title">Liste des matches</p>
+                    <table class="table">
+                        <thead>
+                        <tr class="text-center">
+                            <th scope="col">#</th>
+                            <th scope="col">Tournoi</th>
+                            <th scope="col">Round</th>
+                            <th scope="col">Joueur 1</th>
+                            <th scope="col">Set 1 J1</th>
+                            <th scope="col">Set 2 J1</th>
+                            <th scope="col">Set 3 J1</th>
+                            <th scope="col">Joueur 2</th>
+                            <th scope="col">Set 1 J2</th>
+                            <th scope="col">Set 2 J2</th>
+                            <th scope="col">Set 3 J2</th>
+                            <th scope="col">Vainqueur</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for game in games %}
+
+                            <tr>
+                                <td class="text-center">{{ game.id }}</td>
+                                <td class="text-center">{{ game.tournament.name }}</td>
+                                <td class="text-center">{{ game.round }}</td>
+                                <td class="text-center">{{ game.playerOne.name }}</td>
+                                <td class="text-center">{{ game.playerOneSetOne }}</td>
+                                <td class="text-center">{{ game.playerOneSetTwo }}</td>
+                                <td class="text-center">{{ game.playerOneSetThree }}</td>
+                                <td class="text-center">{{ game.playerTwo.name }}</td>
+                                <td class="text-center">{{ game.playerTwoSetOne }}</td>
+                                <td class="text-center">{{ game.playerTwoSetTwo}}</td>
+                                <td class="text-center">{{ game.playerTwoSetThree }}</td>
+                                <td class="text-center">{{ game.winner.name }}</td>
+                                <td class="text-center"><a class="btn btn-primary" href="{{ path('game_edit', {id: game.id}) }}">Edter</a></td>
+                            </tr>
+
+                        {% else %}
+                            Pas encore de matches
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

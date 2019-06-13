@@ -1,0 +1,43 @@
+{% extends 'admin/index.html.twig' %}
+	{% block title %}Liste des Articles{% endblock %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card position-relative">
+                <div class="card-body">
+                    <p class="card-title">Liste des Articles</p>
+                    <table class="table">
+                        <thead>
+                        <tr class="text-center">
+                            <th scope="col">#</th>
+                            <th scope="col">Image</th>
+                            <th scope="col">Titre</th>
+                            <th scope="col">Contenu</th>
+                            <th scope="col">Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for article in articles %}
+                            <tr>
+                                <td class="text-center">{{ article.id }}</td>
+                                <td class="text-center"><img class="img-fluid" src="{{ asset('images/articles/' ~ article.image )}}" alt="{{ article.title }}"></td>
+                                <td class="text-center">{{ article.title }}</td>
+                                <td style="max-width: 300px;">{{ article.content|raw }}</td>
+                                <td class="text-center"><a class="btn btn-primary" href="{{ path('article_edit', {id: article.id}) }}">Edter</a></td>
+                            </tr>
+                        {% else %}
+                            Pas encore d'articles
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'admin/index.html.twig' %}
+
+{% block title %}Ajouter un Rang{% endblock %}
+{% form_theme form 'bootstrap_4_layout.html.twig' %}
+
+{% block content %}
+
+    <div class="row">
+        <div class="col-md-12 grid-margin stretch-card">
+            <div class="card position-relative">
+                <div class="card-body">
+                    <p class="card-title">Ajouter un Rang</p>
+                    {{ form_start(form) }}
+                    {{ form_row(form.season) }}
+                    {{ form_row(form.position) }}
+                    {{ form_row(form.player) }}
+                    {{ form_row(form.points) }}
+
+                    <button type="submit" class="btn btn-primary">Envoyer</button>
+                    {{ form_end(form) }}
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% extends 'base.html.twig' %}
+	{% block title %}Editer Ligne Classement{% endblock %}
+	{% form_theme form 'bootstrap_4_layout.html.twig' %}
+{% block content %}
+
+    <div class="row">
+        <div class="col-lg-10 col-md-10 mx-auto"><h2>Editer une ligne au Classement</h2>
+            {{ form_start(form) }}
+            {{ form_row(form.tournament) }}
+            {{ form_row(form.player) }}
+            {{ form_row(form.points) }}
+
+            <button type="submit" class="btn btn-primary">Envoyer</button>
+            {{ form_end(form) }}
+            <hr>
+        </div>
+    </div>
+
+{% endblock %}
+{% block javascripts %}
+
+{% endblock %}

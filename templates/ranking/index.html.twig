@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Classements{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-sm-12">
+            <h2 class="text-primary text-center">Classement {{ season.name }}</h2>
+            <hr>
+            <div class="row">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Joueur</th>
+                        <th scope="col">Nb Points</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for ranking in rankings %}
+                    <tr>
+                        <td>{{ ranking.position }}</td>
+                        <td><a href="{{ path('player_show', {id: ranking.player.id}) }}"><img class="player-img-table" src="{{ asset('images/players/' ~ ranking.player.image) }}" alt="{{ ranking.player.name }}"> {{ ranking.player.name }}</a></td>
+                        <td>{{ ranking.points }}</td>
+                    </tr>
+                    {% else %}
+                        <tr>
+                        <td>Pas encore de classement pour cette saison</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+{% endblock %}
